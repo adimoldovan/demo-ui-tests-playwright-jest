@@ -6,7 +6,8 @@
   "scripts": {
     "delete:reports": "rm -rf out/* || true",
     "pretest": "npm run delete:reports",
-    "test": "jest"
+    "test": "jest",
+    "test-ci": "VIDEO=true jest"
   },
   "repository": {
     "type": "git",

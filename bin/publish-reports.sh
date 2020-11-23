@@ -24,6 +24,7 @@ rm -rf "$TEMP_SITE_DIR"
 mkdir -p "$TEMP_SITE_DIR"
 cp -R "$SOURCE_DIR"/. "$TEMP_SITE_DIR"
 
+git fetch
 git checkout $GH_PAGES_BRANCH
 cp -R "$TEMP_SITE_DIR"/. .
 
