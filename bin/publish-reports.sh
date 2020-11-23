@@ -16,7 +16,7 @@ if [ -z "$GH_PAGES_BRANCH" ]; then
   echo "WARN! REPORTS_BRANCH not provided! Defaulting to $GH_PAGES_BRANCH"
 fi
 
-TEMP_SITE_DIR="$HOME/$GITHUB_RUN_NUMBER"
+TEMP_SITE_DIR="$HOME/temp-gh-pages/$GITHUB_RUN_NUMBER"
 SOURCE_DIR="out/reports"
 
 # copy current reports content to a temp dir
@@ -24,10 +24,13 @@ rm -rf "$TEMP_SITE_DIR"
 mkdir -p "$TEMP_SITE_DIR"
 cp -R "$SOURCE_DIR"/. "$TEMP_SITE_DIR"
 
+# checkout reports branch and prepare content
 git fetch
 git checkout $GH_PAGES_BRANCH
-cp -R "$TEMP_SITE_DIR"/. .
+mkdir "$GITHUB_RUN_NUMBER"
+cp -R "$TEMP_SITE_DIR"/. "$GITHUB_RUN_NUMBER"
 
+# commit and push
 if [ -z "$(git status --porcelain)" ]; then
   echo "$LOG_PREFIX There are no changes to deploy"
 else
@@ -38,4 +41,4 @@ else
   git push
 fi
 
-echo "Done"
+echo "Done publishing reports"
