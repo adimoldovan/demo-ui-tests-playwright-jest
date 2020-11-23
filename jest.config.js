@@ -13,7 +13,8 @@ module.exports = {
     OUTPUT_DIR: OUTPUT_DIR,
     REPORTS_DIR: REPORTS_DIR,
     VIDEO_DIR: VIDEO_DIR,
-    LOGS_DIR: LOGS_DIR
+    LOGS_DIR: LOGS_DIR,
+    FAIL_DEMO: process.env.FAIL_DEMO === 'true'
   },
 
   testMatch: [
@@ -31,7 +32,7 @@ module.exports = {
       }
     ],
     ['jest-html-reporters', {
-      publicPath: './out/reports',
+      publicPath: REPORTS_DIR,
       filename: 'test-report.html',
       expand: true
     }]

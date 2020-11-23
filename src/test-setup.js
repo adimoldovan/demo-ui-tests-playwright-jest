@@ -2,6 +2,7 @@ import path from 'path'
 import { saveVideo } from 'playwright-video'
 import { globals } from '../jest.config'
 import logger from './logger'
+import { ProductsPage } from './page/products.page'
 
 let videoCapture
 const video = process.env.VIDEO === 'true'
@@ -24,7 +25,8 @@ beforeEach(async () => {
   }
 
   await page.goto(URL, { waitUntil: 'domcontentloaded' })
-  await expect(page.title()).resolves.toMatch('Demo shop')
+  // eslint-disable-next-line no-unused-vars
+  globals.productsPage = await new ProductsPage(page)
 })
 
 afterEach(async () => {

@@ -1,7 +1,18 @@
+import { globals } from '../../jest.config'
+
 describe('Checkout tests', () => {
   test('Guest can add a product to cart', async () => {
-    await page.click('div.card button.btn-link')
-    const badge = await page.$('span.shopping_cart_badge')
-    await expect(await page.evaluate(badge => badge.textContent, badge)).toBe('1')
+    const productsPage = globals.productsPage
+
+    const initialNumberOfProducts = await productsPage.header.getNumberOfCartProducts()
+    await productsPage.addProductToCart()
+    const currentNumberOfProducts = await productsPage.header.getNumberOfCartProducts()
+    let expectedNumberOfProducts = initialNumberOfProducts + 1
+
+    if (globals.FAIL_DEMO) {
+      expectedNumberOfProducts++
+    }
+
+    await expect(currentNumberOfProducts).toBe(expectedNumberOfProducts)
   })
 })

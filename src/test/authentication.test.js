@@ -1,9 +1,9 @@
+import { globals } from '../../jest.config'
+
 describe('Authentication tests', () => {
   test('Normal user can login', async () => {
-    await page.click('span > button.btn-link')
-    await page.type('#user-name', 'dino')
-    await page.type('#password', 'choochoo')
-    await page.click('button.btn-primary')
+    const loginModal = await globals.productsPage.header.openLogin()
+    await loginModal.login('dino', 'choochoo')
 
     await expect(page.title()).resolves.toMatch('Demo shop')
     const element = await page.$("a[href='#/account']")
