@@ -21,7 +21,7 @@ SOURCE_DIR="out/reports"
 
 # copy current reports content to a temp dir
 rm -rf "$TEMP_SITE_DIR"
-mkdir -p "$SITE_DIR"
+mkdir -p "$TEMP_SITE_DIR"
 cp -R "$SOURCE_DIR"/. "$TEMP_SITE_DIR"
 
 git checkout $GH_PAGES_BRANCH
