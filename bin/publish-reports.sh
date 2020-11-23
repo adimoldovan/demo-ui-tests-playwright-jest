@@ -16,7 +16,7 @@ if [ -z "$GH_PAGES_BRANCH" ]; then
   echo "WARN! REPORTS_BRANCH not provided! Defaulting to $GH_PAGES_BRANCH"
 fi
 
-TEMP_SITE_DIR="~/temp-gh-pages/$GITHUB_RUN_NUMBER"
+TEMP_SITE_DIR="$HOME/$GITHUB_RUN_NUMBER"
 SOURCE_DIR="out/reports"
 
 # copy current reports content to a temp dir
