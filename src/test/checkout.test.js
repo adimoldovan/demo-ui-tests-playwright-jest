@@ -1,0 +1,13 @@
+beforeAll(async () => {
+    await page.goto(URL, {waitUntil: "domcontentloaded"});
+    await expect(page.title()).resolves.toMatch('Demo shop');
+});
+
+describe("Checkout tests", () => {
+    it('Guest can add a product to cart', async () => {
+
+        await page.click("div.card button.btn-link")
+        const badge = await page.$("span.shopping_cart_badge");
+        await expect(await page.evaluate(badge => badge.textContent, badge)).toBe("1")
+    })
+});
