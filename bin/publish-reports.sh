@@ -11,11 +11,21 @@ if [ -z "$USERNAME" ]; then
   echo "WARN! USERNAME not provided! Defaulting to $USERNAME"
 fi
 
-SITE_DIR="docs/$GITHUB_RUN_NUMBER"
+if [ -z "$GH_PAGES_BRANCH" ]; then
+  GH_PAGES_BRANCH="reports"
+  echo "WARN! REPORTS_BRANCH not provided! Defaulting to $GH_PAGES_BRANCH"
+fi
+
+TEMP_SITE_DIR="~/temp-gh-pages/$GITHUB_RUN_NUMBER"
 SOURCE_DIR="out/reports"
 
+# copy current reports content to a temp dir
+rm -rf "$TEMP_SITE_DIR"
 mkdir -p "$SITE_DIR"
-cp -R "$SOURCE_DIR"/. "$SITE_DIR"
+cp -R "$SOURCE_DIR"/. "$TEMP_SITE_DIR"
+
+git checkout $GH_PAGES_BRANCH
+cp -R "$TEMP_SITE_DIR"/. .
 
 if [ -z "$(git status --porcelain)" ]; then
   echo "$LOG_PREFIX There are no changes to deploy"
