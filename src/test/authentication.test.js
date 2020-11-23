@@ -1,8 +1,3 @@
-beforeAll(async () => {
-    await page.goto(URL, {waitUntil: "domcontentloaded"});
-    await expect(page.title()).resolves.toMatch('Demo shop');
-});
-
 describe("Authentication tests", () => {
     it('Normal user can login', async () => {
 
