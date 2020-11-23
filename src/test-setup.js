@@ -1,6 +1,7 @@
 import path from "path";
 import {saveVideo} from "playwright-video";
 import {globals} from "../jest.config";
+import {beforeEach} from "@jest/globals";
 
 let videoCapture;
 const video = process.env.VIDEO === 'true';
