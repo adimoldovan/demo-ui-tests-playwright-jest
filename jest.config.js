@@ -32,9 +32,13 @@ module.exports = {
       }
     ],
     ['jest-html-reporters', {
-      publicPath: REPORTS_DIR,
+      publicPath: `${REPORTS_DIR}/html-reporter`,
       filename: 'test-report.html',
       expand: true
+    }],
+    ['jest-stare', {
+      resultDir: `${REPORTS_DIR}/jest-stare`,
+      reportTitle: 'jest-stare!'
     }]
   ]
 }
