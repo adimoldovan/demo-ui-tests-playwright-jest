@@ -6,6 +6,7 @@ const VIDEO_DIR = `${OUTPUT_DIR}/video`
 const LOGS_DIR = `${OUTPUT_DIR}/logs`
 
 module.exports = {
+  testRunner: 'jest-circus/runner',
   preset: 'jest-playwright-preset',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.js'],
   globals: {
@@ -16,7 +17,6 @@ module.exports = {
     LOGS_DIR: LOGS_DIR,
     FAIL_DEMO: process.env.FAIL_DEMO === 'true'
   },
-
   testMatch: [
     '**/test/**/*.test.js'
   ],
