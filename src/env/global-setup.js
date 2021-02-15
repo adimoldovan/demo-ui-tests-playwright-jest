@@ -15,7 +15,7 @@ module.exports = async function () {
   // Launch a browser server that client can connect to
   global.browser = await chromium.launchServer({
     headless: HEADLESS !== 'false',
-    slowMo: SLOWMO === 'true',
+    slowMo: parseInt(SLOWMO) || 0,
     devtools: DEVTOOLS === 'true'
   })
   mkdirp.sync(DIR)

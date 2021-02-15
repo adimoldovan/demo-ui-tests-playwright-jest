@@ -8,7 +8,7 @@
     "clean-install": "yarn clean && yarn install",
     "delete:reports": "rm -rf out/* || true",
     "pretest": "npm run delete:reports",
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles --forceExit"
   },
   "repository": {
     "type": "git",
