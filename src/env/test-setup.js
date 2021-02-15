@@ -24,7 +24,7 @@ beforeEach(async () => {
   global.page = await global.context.newPage()
 
   const userAgent = await page.evaluate(() => navigator.userAgent)
-  logger.info(`User agent: ${userAgent}`)
+  logger.info(global.chalk.blue(`User agent: ${userAgent}`))
 
   await page.goto(URL, { waitUntil: 'domcontentloaded' })
   globals.productsPage = await new ProductsPage(page)
