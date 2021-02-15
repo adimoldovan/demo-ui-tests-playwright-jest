@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Run tests
-        run: VIDEO=true yarn test
+        run: yarn test
       - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v2.2.0
