@@ -7,15 +7,15 @@ const logger = winston.createLogger({
   levels: winston.config.syslog.levels,
   format: winston.format.json(),
   transports: [
-    new winston.transports.File({ filename: path.resolve(`${globals.LOGS_DIR}/error.log`), level: 'error' }),
-    new winston.transports.File({ filename: path.resolve(`${globals.LOGS_DIR}/combined.log`) })
+    new winston.transports.File({
+      filename: path.resolve(`${globals.LOGS_DIR}/error.log`),
+      level: 'error'
+    }),
+    new winston.transports.File({ filename: path.resolve(`${globals.LOGS_DIR}/combined.log`) }),
+    new winston.transports.Console({
+      format: winston.format.simple()
+    })
   ]
 })
 
-if (process.env.CI !== 'true') {
-  logger.add(new winston.transports.Console({
-    format: winston.format.simple()
-  }))
-}
-
-export default logger;
+export default logger

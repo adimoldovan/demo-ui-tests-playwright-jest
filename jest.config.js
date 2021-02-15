@@ -1,20 +1,19 @@
-process.env.JEST_PLAYWRIGHT_CONFIG = 'jest-playwright.config.js'
-
 const OUTPUT_DIR = 'out'
 const REPORTS_DIR = `${OUTPUT_DIR}/reports`
-const VIDEO_DIR = `${OUTPUT_DIR}/video`
-const LOGS_DIR = `${OUTPUT_DIR}/logs`
 
 module.exports = {
   testRunner: 'jest-circus/runner',
-  preset: 'jest-playwright-preset',
-  setupFilesAfterEnv: ['<rootDir>/src/test-setup.js'],
+  globalSetup: '<rootDir>/src/env/global-setup.js',
+  globalTeardown: '<rootDir>/src/env/global-teardown.js',
+  setupFilesAfterEnv: ['<rootDir>/src/env/test-setup.js'],
+  testEnvironment: '<rootDir>/src/env/playwright-environment.js',
   globals: {
     URL: 'https://adimoldovan.github.io/demo-shop/#/',
     OUTPUT_DIR: OUTPUT_DIR,
-    REPORTS_DIR: REPORTS_DIR,
-    VIDEO_DIR: VIDEO_DIR,
-    LOGS_DIR: LOGS_DIR,
+    REPORTS_DIR: `${OUTPUT_DIR}/reports`,
+    VIDEO_DIR: `${OUTPUT_DIR}/video`,
+    LOGS_DIR: `${OUTPUT_DIR}/logs`,
+    SCREENSHOTS_DIR: `${OUTPUT_DIR}/screenshots`,
     FAIL_DEMO: process.env.FAIL_DEMO === 'true'
   },
   testMatch: [

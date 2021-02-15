@@ -4,25 +4,26 @@
   "description": "UI automation project to demonstrate Playwright",
   "main": "index.js",
   "scripts": {
+    "clean": "rm -rf node_modules",
+    "clean-install": "yarn clean && yarn install",
     "delete:reports": "rm -rf out/* || true",
     "pretest": "npm run delete:reports",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/adimoldovan/demo-ui-tests-playwright.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Adrian Moldovan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/adimoldovan/demo-ui-tests-playwright/issues"
   },
   "homepage": "https://github.com/adimoldovan/demo-ui-tests-playwright#readme",
   "devDependencies": {
+    "@babel/core":"^7.0.0-0",
     "@babel/preset-env": "^7.12.7",
-    "@typescript-eslint/eslint-plugin": "^4.8.1",
-    "@typescript-eslint/parser": "^4.8.1",
     "babel-jest": "^26.6.3",
     "eslint": "^7.14.0",
     "eslint-config-standard": "^16.0.2",
@@ -36,7 +37,6 @@
     "jest-circus": "^26.6.3",
     "jest-html-reporters": "^2.1.0",
     "jest-junit": "^12.0.0",
-    "jest-playwright-preset": "^1.4.1",
     "jest-stare": "^2.2.0",
     "playwright": "^1.8.1",
     "winston": "^3.3.3"
