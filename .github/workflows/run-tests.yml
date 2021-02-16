@@ -44,8 +44,7 @@ jobs:
       - uses: testspace-com/setup-testspace@v1
         with:
           domain: ${{github.repository_owner}}
-          token: ${{secrets.TESTSPACE_TOKEN}}
       - name: Publish to Testspace
         run: |
-          testspace out/reports/junit-*.xml ${token}:@${domain}.testspace.com/standalone-demo-playwright/test-space
+          testspace out/reports/junit-*.xml
         if: always()
