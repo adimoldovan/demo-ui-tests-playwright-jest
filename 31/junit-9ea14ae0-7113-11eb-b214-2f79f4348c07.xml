@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="E2E Demo Shop tests" tests="2" failures="1" errors="0" time="13.223">
+  <testsuite name="Checkout tests" errors="0" failures="1" skipped="0" timestamp="2021-02-17T11:30:51" time="10.773" tests="1">
+    <testcase classname="Checkout tests Guest can add a product to cart" name="Checkout tests Guest can add a product to cart" time="5.004">
+      <failure>Error: thrown: &quot;Exceeded timeout of 5000 ms for a hook.
+Use jest.setTimeout(newTimeout) to increase the timeout value, if this is a long-running test.&quot;
+    at Object.&lt;anonymous&gt; (/home/runner/work/demo-ui-tests-playwright/demo-ui-tests-playwright/src/env/test-setup.js:9:1)
+    at Runtime._execModule (/home/runner/work/demo-ui-tests-playwright/demo-ui-tests-playwright/node_modules/jest-runtime/build/index.js:1299:24)
+    at Runtime._loadModule (/home/runner/work/demo-ui-tests-playwright/demo-ui-tests-playwright/node_modules/jest-runtime/build/index.js:898:12)
+    at Runtime.requireModule (/home/runner/work/demo-ui-tests-playwright/demo-ui-tests-playwright/node_modules/jest-runtime/build/index.js:746:10)
+    at jestAdapter (/home/runner/work/demo-ui-tests-playwright/demo-ui-tests-playwright/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:93:15)
+    at runTestInternal (/home/runner/work/demo-ui-tests-playwright/demo-ui-tests-playwright/node_modules/jest-runner/build/runTest.js:380:16)
+    at runTest (/home/runner/work/demo-ui-tests-playwright/demo-ui-tests-playwright/node_modules/jest-runner/build/runTest.js:472:34)</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Authentication tests" errors="0" failures="0" skipped="0" timestamp="2021-02-17T11:31:02" time="2.339" tests="1">
+    <testcase classname="Authentication tests Normal user can login" name="Authentication tests Normal user can login" time="0.955">
+    </testcase>
+  </testsuite>
+</testsuites>
