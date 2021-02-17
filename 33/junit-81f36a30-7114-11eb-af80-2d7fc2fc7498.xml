@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="E2E Demo Shop tests" tests="2" failures="1" errors="0" time="5.996">
+  <testsuite name="Checkout tests" errors="0" failures="1" skipped="0" timestamp="2021-02-17T11:37:19" time="3.367" tests="1">
+    <testcase classname="Checkout tests Guest can add a product to cart" name="Checkout tests Guest can add a product to cart" time="0.978">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 2
+Received: 1
+    at Object.&lt;anonymous&gt; (/home/runner/work/demo-ui-tests-playwright/demo-ui-tests-playwright/src/test/checkout.test.js:16:43)
+    at Generator.next (&lt;anonymous&gt;)
+    at asyncGeneratorStep (/home/runner/work/demo-ui-tests-playwright/demo-ui-tests-playwright/src/test/checkout.test.js:5:103)
+    at _next (/home/runner/work/demo-ui-tests-playwright/demo-ui-tests-playwright/src/test/checkout.test.js:7:194)</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Authentication tests" errors="0" failures="0" skipped="0" timestamp="2021-02-17T11:37:23" time="2.512" tests="1">
+    <testcase classname="Authentication tests Normal user can login" name="Authentication tests Normal user can login" time="0.946">
+    </testcase>
+  </testsuite>
+</testsuites>
