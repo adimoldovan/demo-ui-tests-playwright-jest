@@ -10,10 +10,10 @@ on:
       - '**.md'
   workflow_dispatch:
     inputs:
-      testArg:
-        description: 'Test argument'
+      demoFailure:
+        description: 'Should fail?'
         required: true
-        default: 'Test value'
+        default: 'false'
 
 jobs:
   e2e-tests:
@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Run tests
-        run: yarn test
+        run: FAIL_DEMO=${{demoFailure}} yarn test
       - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v2.2.0
