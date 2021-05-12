@@ -2,8 +2,6 @@ import { globals } from '../../jest.config'
 
 describe('Checkout tests', () => {
   test('Guest can add a product to cart', async () => {
-    const productsPage = globals.productsPage
-
     const initialNumberOfProducts = await productsPage.header.getNumberOfCartProducts()
     await productsPage.addProductToCart()
     const currentNumberOfProducts = await productsPage.header.getNumberOfCartProducts()

@@ -3,7 +3,8 @@
     "browser": true,
     "es6": true,
     "node": true,
-    "jest/globals": true
+    "jest/globals": true,
+    "jest": true
   },
   "extends": [
     "standard",
@@ -11,11 +12,19 @@
     "plugin:jest/recommended",
     "plugin:jest-formatting/recommended"
   ],
+  "globals": {
+    "browser": true,
+    "page": true,
+    "context": true,
+    "productsPage": true
+  },
   "plugins": [],
   "parserOptions": {
     "ecmaVersion": 2019,
     "sourceType": "module"
   },
   "rules": {
+    "arrow-parens": [ 0, "as-needed" ],
+    "no-console": 0
   }
 }

@@ -1,8 +1,6 @@
-import { globals } from '../../jest.config'
-
 describe('Authentication tests', () => {
   test('Normal user can login', async () => {
-    const loginModal = await globals.productsPage.header.openLogin()
+    const loginModal = await productsPage.header.openLogin()
     await loginModal.login('dino', 'choochoo')
 
     await expect(page.title()).resolves.toMatch('Demo shop')

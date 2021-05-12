@@ -4,11 +4,12 @@ const path = require('path')
 const { chromium } = require('playwright')
 const os = require('os')
 
-const DIR = path.join(os.tmpdir(), 'jest_playwright_global_setup')
+const DIR = path.join(os.tmpdir(), 'pw_global_setup')
 
 class PlaywrightEnvironment extends NodeEnvironment {
   async setup () {
     await super.setup()
+
     const wsEndpoint = fs.readFileSync(path.join(DIR, 'wsEndpoint'), 'utf8')
     if (!wsEndpoint) {
       throw new Error('wsEndpoint not found')
@@ -17,10 +18,27 @@ class PlaywrightEnvironment extends NodeEnvironment {
     this.global.browser = await chromium.connect({
       wsEndpoint
     })
+
+    console.log('New context')
+
+    this.global.context = await this.global.browser.newContext({
+      viewport: {
+        width: 1280,
+        height: 1024
+      },
+      recordVideo: {
+        dir: this.global.VIDEO_DIR,
+        size: {
+          width: 800,
+          height: 600
+        }
+      }
+    })
   }
 
   async teardown () {
     await super.teardown()
+    await this.global.context.close()
   }
 
   async handleTestEvent (event) {
@@ -31,10 +49,6 @@ class PlaywrightEnvironment extends NodeEnvironment {
       await this.global.page.screenshot({
         path: `${this.global.SCREENSHOTS_DIR}/${parentName}_${specName}.png`
       })
-    }
-
-    if (event.name === 'test_done') {
-      await this.global.context.close()
     }
   }
 

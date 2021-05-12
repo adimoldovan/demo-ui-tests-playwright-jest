@@ -4,7 +4,7 @@ const path = require('path')
 const fs = require('fs')
 const os = require('os')
 
-const DIR = path.join(os.tmpdir(), 'jest_playwright_global_setup')
+const DIR = path.join(os.tmpdir(), 'pw_global_setup')
 const {
   HEADLESS,
   SLOWMO,
@@ -20,4 +20,5 @@ module.exports = async function () {
   })
   mkdirp.sync(DIR)
   fs.writeFileSync(path.join(DIR, 'wsEndpoint'), global.browser.wsEndpoint())
+  console.log('global setup done')
 }
