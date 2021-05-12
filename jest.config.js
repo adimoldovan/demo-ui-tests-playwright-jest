@@ -15,7 +15,6 @@ module.exports = {
     LOGS_DIR: `${OUTPUT_DIR}/logs`,
     SCREENSHOTS_DIR: `${OUTPUT_DIR}/screenshots`,
     FAIL_DEMO: process.env.FAIL_DEMO === 'true',
-    chalk: require('chalk')
   },
   testMatch: [
     '**/test/**/*.test.js'

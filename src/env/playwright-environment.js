@@ -19,8 +19,6 @@ class PlaywrightEnvironment extends NodeEnvironment {
       wsEndpoint
     })
 
-    console.log('New context')
-
     this.global.context = await this.global.browser.newContext({
       viewport: {
         width: 1280,

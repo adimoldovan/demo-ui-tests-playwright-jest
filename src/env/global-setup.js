@@ -20,5 +20,4 @@ module.exports = async function () {
   })
   mkdirp.sync(DIR)
   fs.writeFileSync(path.join(DIR, 'wsEndpoint'), global.browser.wsEndpoint())
-  console.log('global setup done')
 }
