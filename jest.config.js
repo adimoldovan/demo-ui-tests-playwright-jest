@@ -14,7 +14,7 @@ module.exports = {
     VIDEO_DIR: `${OUTPUT_DIR}/video`,
     LOGS_DIR: `${OUTPUT_DIR}/logs`,
     SCREENSHOTS_DIR: `${OUTPUT_DIR}/screenshots`,
-    FAIL_DEMO: process.env.FAIL_DEMO === 'true',
+    FAIL_DEMO: process.env.FAIL_DEMO === 'true'
   },
   testMatch: [
     '**/test/**/*.test.js'
@@ -38,6 +38,8 @@ module.exports = {
     ['jest-stare', {
       resultDir: `${REPORTS_DIR}/jest-stare`,
       reportTitle: 'jest-stare!'
+    }], ['jest-tesults-reporter', {
+      'tesults-target': process.env.TESULTS_TOKEN
     }]
   ]
 }

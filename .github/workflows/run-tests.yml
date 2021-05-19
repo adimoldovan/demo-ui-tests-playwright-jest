@@ -21,30 +21,39 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: 12
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
       - name: Run tests
+        env:
+          TESULTS_TOKEN: ${{secrets.TESULTS_TOKEN}}
         run: FAIL_DEMO=${{github.event.inputs.demoFailure}} yarn test
+
       - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v2.2.0
         with:
           name: test-output
           path: out
+
       - name: Publish reports
         if: always()
         env:
           EMAIL: "github-actions-bot-noreply@noreply"
           USERNAME: "github-actions-bot"
         run: sh bin/publish-reports.sh
+
       - uses: testspace-com/setup-testspace@v1
         with:
           domain: ${{github.repository_owner}}
         if: always()
+
       - name: Publish to Testspace
         run: |
           testspace out/reports/junit-*.xml
