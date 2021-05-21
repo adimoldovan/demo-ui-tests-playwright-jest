@@ -1,5 +1,5 @@
-import path from 'path'
-import { globals } from '../jest.config'
+const { globals } = require('../jest.config')
+const path = require('path')
 
 const winston = require('winston')
 
@@ -32,4 +32,6 @@ if (!process.env.CI) {
   }))
 }
 
-export default logger
+module.exports = {
+  logger
+}

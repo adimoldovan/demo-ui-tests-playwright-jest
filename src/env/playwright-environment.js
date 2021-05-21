@@ -3,10 +3,11 @@ const fs = require('fs')
 const path = require('path')
 const { chromium } = require('playwright')
 const os = require('os')
+const AllureNodeEnvironment = require('jest-circus-allure-environment').default
 
 const DIR = path.join(os.tmpdir(), 'pw_global_setup')
 
-class PlaywrightEnvironment extends NodeEnvironment {
+class PlaywrightEnvironment extends AllureNodeEnvironment {
   async setup () {
     await super.setup()
 
@@ -39,7 +40,9 @@ class PlaywrightEnvironment extends NodeEnvironment {
     await this.global.context.close()
   }
 
-  async handleTestEvent (event) {
+  async handleTestEvent (event, state) {
+    await super.handleTestEvent(event, state)
+
     if (event.name === 'test_done' && event.test.errors.length > 0 && this.global.page) {
       const parentName = event.test.parent.name.replace(/\W/g, '-')
       const specName = event.test.name.replace(/\W/g, '-')

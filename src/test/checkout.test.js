@@ -1,4 +1,4 @@
-import { globals } from '../../jest.config'
+const { globals } = require('../../jest.config')
 
 describe('Checkout tests', () => {
   test('Guest can add a product to cart', async () => {

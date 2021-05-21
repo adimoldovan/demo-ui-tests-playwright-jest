@@ -1,5 +1,5 @@
-import { AppPage } from './app-page.page'
-import { HeaderModule } from './header.page'
+const { AppPage } = require('./app-page.page')
+const { HeaderModule } = require('./header.page')
 
 class ProductsPage extends AppPage {
   constructor (page) {

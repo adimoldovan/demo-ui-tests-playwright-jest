@@ -1,6 +1,6 @@
-import logger from '../logger'
-import chalk from 'chalk'
-import { ProductsPage } from '../page/products.page'
+const { logger } = require('../logger')
+const chalk = require('chalk')
+const { ProductsPage } = require('../page/products.page')
 
 beforeEach(async () => {
   global.page = await global.context.newPage()

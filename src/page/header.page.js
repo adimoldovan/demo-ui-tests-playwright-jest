@@ -1,4 +1,4 @@
-import { LoginModal } from './login.page'
+const { LoginModal } = require('./login.page')
 
 class HeaderModule {
   constructor (page) {
