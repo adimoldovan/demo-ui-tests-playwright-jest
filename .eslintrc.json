@@ -15,7 +15,8 @@
     "browser": true,
     "page": true,
     "context": true,
-    "productsPage": true
+    "productsPage": true,
+    "allure": true
   },
   "plugins": [],
   "parserOptions": {

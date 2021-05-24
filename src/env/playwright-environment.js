@@ -3,6 +3,9 @@ const fs = require('fs')
 const path = require('path')
 const { chromium } = require('playwright')
 const os = require('os')
+const chalk = require('chalk')
+const { logger } = require('../logger')
+const { takeScreenshot } = require('../reporter/screenshot')
 const AllureNodeEnvironment = require('jest-circus-allure-environment').default
 
 const DIR = path.join(os.tmpdir(), 'pw_global_setup')
@@ -43,14 +46,31 @@ class PlaywrightEnvironment extends AllureNodeEnvironment {
   async handleTestEvent (event, state) {
     await super.handleTestEvent(event, state)
 
-    if (event.name === 'test_done' && event.test.errors.length > 0 && this.global.page) {
-      const parentName = event.test.parent.name.replace(/\W/g, '-')
-      const specName = event.test.name.replace(/\W/g, '-')
+    let eventName
 
-      await this.global.page.screenshot({
-        path: `${this.global.SCREENSHOTS_DIR}/${parentName}_${specName}.png`
-      })
+    if (event.hook) {
+      eventName = `${event.hook.type} - ${event.hook.parent.name}`
+    } else if (event.test) {
+      eventName = `${event.test.parent.name} - ${event.test.name}`
+    } else {
+      eventName = event.name
     }
+
+    switch (event.name) {
+      case 'hook_failure':
+        await this.onFailureEvent(eventName, event.hook.parent.name, event.hook.type, event.error)
+        break
+      case 'test_fn_failure':
+        await this.onFailureEvent(eventName, event.test.parent.name, event.test.name, event.error)
+        break
+      default:
+        break
+    }
+  }
+
+  async onFailureEvent (eventFullName, parentName, eventName, error) {
+    logger.error(chalk.red(`FAILURE: ${error}`))
+    await takeScreenshot(this.global.page, eventFullName, this.global.allure)
   }
 
   runScript (script) {

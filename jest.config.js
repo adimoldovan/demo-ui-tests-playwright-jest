@@ -16,6 +16,9 @@ module.exports = {
     SCREENSHOTS_DIR: `${OUTPUT_DIR}/screenshots`,
     FAIL_DEMO: process.env.FAIL_DEMO === 'true'
   },
+  testEnvironmentOptions: {
+    resultsDir: `${OUTPUT_DIR}/allure-results`
+  },
   testMatch: [
     '**/test/**/*.test.js'
   ],
