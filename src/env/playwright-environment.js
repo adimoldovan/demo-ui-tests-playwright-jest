@@ -6,6 +6,7 @@ const chalk = require('chalk')
 const { logger } = require('../logger')
 const { takeScreenshot } = require('../reporter/screenshot')
 const AllureNodeEnvironment = require('jest-circus-allure-environment').default
+const { globals } = require('../../jest.config')
 
 const DIR = path.join(os.tmpdir(), 'pw_global_setup')
 
@@ -28,7 +29,7 @@ class PlaywrightEnvironment extends AllureNodeEnvironment {
         height: 1024
       },
       recordVideo: {
-        dir: this.global.VIDEO_DIR,
+        dir: globals.VIDEO_DIR,
         size: {
           width: 800,
           height: 600
@@ -43,8 +44,6 @@ class PlaywrightEnvironment extends AllureNodeEnvironment {
   }
 
   async handleTestEvent (event, state) {
-    await super.handleTestEvent(event, state)
-
     let eventName
 
     if (event.hook) {
@@ -65,6 +64,8 @@ class PlaywrightEnvironment extends AllureNodeEnvironment {
       default:
         break
     }
+
+    await super.handleTestEvent(event, state)
   }
 
   async onFailureEvent (eventFullName, parentName, eventName, error) {
