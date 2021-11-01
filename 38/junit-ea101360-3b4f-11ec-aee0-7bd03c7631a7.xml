@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="E2E Demo Shop tests" tests="2" failures="0" errors="0" time="3.614">
+  <testsuite name="Checkout tests" errors="0" failures="0" skipped="0" timestamp="2021-11-01T20:11:32" time="1.653" tests="1">
+    <testcase classname="Checkout tests Guest can add a product to cart" name="Checkout tests Guest can add a product to cart" time="0.93">
+    </testcase>
+  </testsuite>
+  <testsuite name="Authentication tests" errors="0" failures="0" skipped="0" timestamp="2021-11-01T20:11:34" time="1.341" tests="1">
+    <testcase classname="Authentication tests Normal user can login" name="Authentication tests Normal user can login" time="1.188">
+    </testcase>
+  </testsuite>
+</testsuites>
