@@ -1,9 +1,10 @@
 const os = require('os')
 const rimraf = require('rimraf')
 const path = require('path')
+const TMP_DIR = path.join(os.tmpdir(), 'jest_playwright_global_setup')
 
-const DIR = path.join(os.tmpdir(), 'pw_global_setup')
 module.exports = async function () {
+  // Close browser
   await global.browser.close()
-  rimraf.sync(DIR)
+  rimraf.sync(TMP_DIR)
 }

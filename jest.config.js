@@ -7,6 +7,9 @@ module.exports = {
   globalTeardown: '<rootDir>/src/env/global-teardown.js',
   setupFilesAfterEnv: ['<rootDir>/src/env/test-setup.js'],
   testEnvironment: '<rootDir>/src/env/playwright-environment.js',
+  testEnvironmentOptions: {
+    resultsDir: 'out/allure-results'
+  },
   globals: {
     URL: 'https://adimoldovan.github.io/demo-shop/#/',
     OUTPUT_DIR: OUTPUT_DIR,

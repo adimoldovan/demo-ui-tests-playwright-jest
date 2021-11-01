@@ -1,35 +1,52 @@
-import path from 'path'
-import { globals } from '../jest.config'
+const { createLogger, format, transports } = require('winston')
+const path = require('path')
 
-const winston = require('winston')
+let consoleLogLevel = process.env.CONSOLE_LOG_LEVEL || 'debug'
 
-const customFormat = winston.format.printf(({ level, message, timestamp }) => {
-  return `${timestamp} ${level}: ${message}`
-})
-const defaultFormat = winston.format.combine(
-  winston.format.timestamp(),
-  winston.format.cli(),
-  customFormat
-)
-
-const logger = winston.createLogger({
-  levels: winston.config.syslog.levels,
-  format: defaultFormat,
-  transports: [
-    new winston.transports.File({
-      filename: path.resolve(`${globals.LOGS_DIR}/error.log`),
-      level: 'error'
-    }),
-    new winston.transports.File({
-      filename: path.resolve(`${globals.LOGS_DIR}/combined.log`)
-    })
-  ]
-})
-
-if (!process.env.CI) {
-  logger.add(new winston.transports.Console({
-    format: defaultFormat
-  }))
+if (process.env.CI) {
+  consoleLogLevel = 'error'
 }
 
-export default logger
+const stringFormat = format.combine(
+  format.timestamp(),
+  format.errors({ stack: true }),
+  format.printf(info => {
+    let msg = `${info.timestamp} ${info.level}: ${info.message}`
+    if (info.stack) {
+      msg = msg + `\n${info.stack}`
+    }
+
+    return msg
+  }),
+  format.uncolorize()
+)
+
+// eslint-disable-next-line no-unused-vars
+const logger = (module.exports = createLogger({
+  format: format.combine(
+    format.timestamp({
+      format: 'YYYY-MM-DD HH:mm:ss'
+    }),
+    format.errors({ stack: true }),
+    format.splat(),
+    format.json()
+  ),
+  transports: [
+    new transports.File({
+      filename: path.resolve('out/logs', 'e2e-debug.log'),
+      format: stringFormat,
+      level: 'debug'
+    }),
+
+    new transports.Console({
+      format: format.combine(
+        format.timestamp(),
+        format.colorize(),
+        format.printf(({ level, message, timestamp }) => {
+          return `${timestamp} ${level}: ${message}`
+        })
+      ),
+      level: consoleLogLevel
+    })
+  ]
+}))
