@@ -1,0 +1,220 @@
+{
+  "numFailedTestSuites": 0,
+  "numFailedTests": 0,
+  "numPassedTestSuites": 2,
+  "numPassedTests": 2,
+  "numPendingTestSuites": 0,
+  "numPendingTests": 0,
+  "numRuntimeErrorTestSuites": 0,
+  "numTodoTests": 0,
+  "numTotalTestSuites": 2,
+  "numTotalTests": 2,
+  "openHandles": [],
+  "snapshot": {
+    "added": 0,
+    "didUpdate": false,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0
+  },
+  "startTime": 1668000556411,
+  "success": false,
+  "testResults": [
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 1,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1668000558440,
+        "runtime": 1633,
+        "slow": false,
+        "start": 1668000556807
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "uncheckedKeys": [],
+        "unmatched": 0,
+        "updated": 0
+      },
+      "testFilePath": "/home/runner/work/demo-ui-tests-playwright-jest/demo-ui-tests-playwright-jest/src/test/checkout.test.js",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "Checkout tests"
+          ],
+          "duration": 1033,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Checkout tests Guest can add a product to cart",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "Guest can add a product to cart"
+        }
+      ],
+      "failureMessage": null
+    },
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 1,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1668000559770,
+        "runtime": 1134,
+        "slow": false,
+        "start": 1668000558636
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "uncheckedKeys": [],
+        "unmatched": 0,
+        "updated": 0
+      },
+      "testFilePath": "/home/runner/work/demo-ui-tests-playwright-jest/demo-ui-tests-playwright-jest/src/test/authentication.test.js",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "Authentication tests"
+          ],
+          "duration": 1017,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Authentication tests Normal user can login",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "Normal user can login"
+        }
+      ],
+      "failureMessage": null
+    }
+  ],
+  "wasInterrupted": false,
+  "config": {
+    "bail": 0,
+    "changedFilesWithAncestor": false,
+    "collectCoverage": false,
+    "collectCoverageFrom": [],
+    "coverageDirectory": "/home/runner/work/demo-ui-tests-playwright-jest/demo-ui-tests-playwright-jest/coverage",
+    "coverageProvider": "babel",
+    "coverageReporters": [
+      "json",
+      "text",
+      "lcov",
+      "clover"
+    ],
+    "detectLeaks": false,
+    "detectOpenHandles": true,
+    "errorOnDeprecated": false,
+    "expand": false,
+    "findRelatedTests": false,
+    "forceExit": false,
+    "globalSetup": "/home/runner/work/demo-ui-tests-playwright-jest/demo-ui-tests-playwright-jest/src/env/global-setup.js",
+    "globalTeardown": "/home/runner/work/demo-ui-tests-playwright-jest/demo-ui-tests-playwright-jest/src/env/global-teardown.js",
+    "json": false,
+    "lastCommit": false,
+    "listTests": false,
+    "logHeapUsage": false,
+    "maxConcurrency": 5,
+    "maxWorkers": 1,
+    "noStackTrace": false,
+    "nonFlagArgs": [],
+    "notify": false,
+    "notifyMode": "failure-change",
+    "onlyChanged": false,
+    "onlyFailures": false,
+    "passWithNoTests": false,
+    "projects": [],
+    "reporters": [
+      [
+        "default",
+        {}
+      ],
+      [
+        "/home/runner/work/demo-ui-tests-playwright-jest/demo-ui-tests-playwright-jest/node_modules/jest-junit/index.js",
+        {
+          "suiteName": "E2E Demo Shop tests",
+          "outputDirectory": "out/reports",
+          "outputName": "junit-results.xml",
+          "uniqueOutputName": "true"
+        }
+      ],
+      [
+        "/home/runner/work/demo-ui-tests-playwright-jest/demo-ui-tests-playwright-jest/node_modules/jest-html-reporters/index.js",
+        {
+          "publicPath": "out/reports/html-reporter",
+          "filename": "test-report.html",
+          "expand": true
+        }
+      ],
+      [
+        "/home/runner/work/demo-ui-tests-playwright-jest/demo-ui-tests-playwright-jest/node_modules/jest-stare/lib/index.js",
+        {
+          "resultDir": "out/reports/jest-stare/",
+          "reportTitle": "jest-stare!",
+          "additionalResultsProcessors": [],
+          "resultHtml": "index.html",
+          "resultJson": "jest-results.json"
+        }
+      ],
+      [
+        "/home/runner/work/demo-ui-tests-playwright-jest/demo-ui-tests-playwright-jest/node_modules/jest-tesults-reporter/tesults-reporter.js",
+        {
+          "tesults-target": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjAwMTdkYWZmLTA0OWMtNDYzMC04YjZkLTQ3YzIyZGY5ODk3MS0xNjIxNDE5NDE4ODMxIiwiZXhwIjo0MTAyNDQ0ODAwMDAwLCJ2ZXIiOiIwIiwic2VzIjoiMmM3N2ZmYTMtZTdjYy00MjMxLWJhZWMtMDA3YTg2YjljY2M0IiwidHlwZSI6InQifQ.3RLb9yJ6qk91R-CyZ1RmiWIhhr0BMHpMzOPKSvL-FgU"
+        }
+      ]
+    ],
+    "rootDir": "/home/runner/work/demo-ui-tests-playwright-jest/demo-ui-tests-playwright-jest",
+    "runTestsByPath": false,
+    "skipFilter": false,
+    "testFailureExitCode": 1,
+    "testPathPattern": "",
+    "testSequencer": "/home/runner/work/demo-ui-tests-playwright-jest/demo-ui-tests-playwright-jest/node_modules/@jest/test-sequencer/build/index.js",
+    "updateSnapshot": "none",
+    "useStderr": false,
+    "verbose": true,
+    "watch": false,
+    "watchAll": false,
+    "watchman": true
+  },
+  "endTime": 1668000559962,
+  "_reporterOptions": {
+    "publicPath": "out/reports/html-reporter",
+    "filename": "test-report.html",
+    "expand": true,
+    "pageTitle": "",
+    "hideIcon": false,
+    "testCommand": "npx jest",
+    "openReport": false,
+    "multipleReportsUnitePath": "",
+    "failureMessageOnly": false,
+    "enableMergeData": false,
+    "dataMergeLevel": 1
+  },
+  "attachInfos": {}
+}
