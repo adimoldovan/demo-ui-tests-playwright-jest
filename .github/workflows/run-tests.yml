@@ -15,7 +15,7 @@ on:
         required: true
         default: 'false'
   repository_dispatch:
-    types: [e2e*]
+    types: ['e2e*']
 
 jobs:
   e2e-tests:
